@@ -1,5 +1,111 @@
-html {
-  box-sizing: border-box;
+
+.hiddenButton {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* MOVIES LIST ==========================================*/
+
+.movies-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+}
+.movie {
+  height: 250px;
+  position: relative;
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+.movie:hover {
+  transform: scale(1.03);
+}
+.poster {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.movie-title {
+  position: relative;
+  z-index: 1;
+  left: 20px;
+  bottom: 50px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  margin: 0;
+  color: #fff;
+}
+.inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  background: -webkit-linear-gradient(
+    bottom,
+    #000 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: all 200ms linear;
+}
+.inner:hover {
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.47);
+}
+/* BUTTONS PAGINATION */
+.pagination-box {
+  margin: 28px auto 24px;
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+.pagination-box-button {
+  width: 76px;
+  font-size: 18px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  border: 1px rgb(199, 195, 195) solid;
+
+  transition: all 200ms linear;
+  outline: none;
+  cursor: pointer;
+}
+.pagination-box-button:hover {
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+.hiddenButton {
+  opacity: 0;
+  visibility: hidden;
+}
+.pagination-box-info {
+  border-radius: 6px;
+  border: 1px rgb(199, 195, 195) solid;
+  height: 30px;
+  width: 30px;
+  background: #f8f8f8;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  line-height: 2.2;
 }
 
 *,
@@ -10,8 +116,10 @@ html {
     padding: 0;
 }
 
-/* -------- HEADER  **------------------------------------------------------------- */
-
+/* --------HEADER-------------------- */
+header {
+  background-color: #77c1bb;
+}
 .js-header {
   display: flex;
   justify-content: space-between;
@@ -103,53 +211,119 @@ html {
   margin: 0 auto;
   background-color: #f3f6f6;
 }
+/* ///FOOTER/// */
 
-/* -------ANIMATION  LOGO--------------------------------------------- */
-
-@keyframes anime {
-  from,
-  20%,
-  53%,
-  80%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0);
-  }
-
-  40%,
-  43% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -16px, 0);
-  }
-
-  70% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -10px, 0);
-  }
-
-  90% {
-    transform: translate3d(0, -2px, 0);
-  }
-}
-
-.anime {
-  animation: anime 4s;
-  animation-name: anime;
-  transform-origin: center bottom;
-}
-
-
-/* ------- FOOTER  **----------------------------------------------------- */
-
-.js-footer {
-  margin-top: auto;
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 90px;
   background-color: #77c1bb;
-  padding-top: 34px;
+  font-size: 16px;
 }
 
+
 .info-footer {
-  font-size: 16px;
   margin: 0 auto;
   width: 200px;
+}
+
+.section {
+  max-width: 1200px;
+  padding-bottom: 20px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.poster-wrapper {
+  width: 400px;
+  height: 600px;
+}
+
+.description-wrapper {
+  width: 800px;
+}
+
+.film-title {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+
+.vote-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #77c1bb;
+}
+
+.popularity-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.original-film-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #77c1bb;
+}
+
+.film-genre-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  margin-bottom: 50px;
+}
+
+h3 {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.film-description {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.button-wrapper {
+  margin: 0;
+  margin-left: 20px;
+}
+
+.button-icon {
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.video-icon-remove:before,
+.video-icon:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.video-icon:before {
+  background-image: url();
+}
+
+.calendar-icon-remove:before,
+.calendar-icon:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.calendar-icon:before {
+  background-image: url();
+}
+.film-poster {
+  height: 100%;
 }

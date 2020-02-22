@@ -14,14 +14,14 @@
 
   <body>
     <header>
-      <div class="js-header">
-        <a href="#" class="logo-website anime">
+      <div class="js-header container">
+        <a href="#" class="logo-website">
           <img src="./images/logo.png" alt="logo" class="logo-img" />
           <span class="logo-name">Filmoteka</span>
         </a>
         <nav class="nav-website">
           <ul class="nav-list">
-            <li class="nav-list__item" data-action="home">home</li>
+            <li class="js-home nav-list__item" data-action="home">home</li>
             <li class="nav-list__item" data-action="library">my library</li>
           </ul>
         </nav>
@@ -30,19 +30,20 @@
         <form action="search">
           <input
             type="text"
-            class="searchInput"
+            class="js-search-input searchInput"
             placeholder="Write movie name and click Enter"
           />
         </form>
       </div>
     </header>
 
-    <main class="js-main"></main>
-
-    <footer>
-      <div class="js-footer">
-        <p class="info-footer">Made by GroupName</p>
+    <main class="js-main">
+      <div class="container">
+       
       </div>
-    </footer>
+    </main>
+    <footer class="footer">
+          <p class="info-footer">Made by GroupName</p>
+      </footer>
   </body>
 </html>
