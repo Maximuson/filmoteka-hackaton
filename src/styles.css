@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  margin: 0;
 }
 
 *,
@@ -8,13 +9,98 @@ html {
   box-sizing: inherit;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+.section {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
 
-  /*
-   * CSS image reference example.
-   */
-  background-image: url('./images/bg-pattern.png');
+.poster-wrapper {
+  width: 400px;
+  height: 600px;
+}
+
+.description-wrapper {
+  width: 800px;
+}
+
+.film-title {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+
+.vote-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #77c1bb;
+}
+
+.popularity-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.original-film-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #77c1bb;
+}
+
+.film-genre-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  margin-bottom: 50px;
+}
+
+h3 {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.film-description {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.button-wrapper {
+  margin: 0;
+  margin-left: 20px;
+}
+
+.button-icon {
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.video-icon-remove:before,
+.video-icon:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.video-icon:before {
+  background-image: url();
+}
+
+.calendar-icon-remove:before,
+.calendar-icon:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.calendar-icon:before {
+  background-image: url();
 }
