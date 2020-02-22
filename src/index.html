@@ -4,42 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap"
+      rel="stylesheet"
+    />
     <title>Webpack Starter Kit</title>
-
-    <!-- Don't forget to delete this style tag. -->
-    <style>
-      body {
-        min-height: 100vh;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .intro {
-        text-align: center;
-      }
-
-      .intro h1 {
-        margin-top: 0;
-        font-weight: 500;
-        font-size: 40px;
-      }
-
-      .intro img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-    </style>
   </head>
 
   <body>
-    <article class="intro">
-      <h1>Webpack starter kit</h1>
+    <header>
+      <div class="js-header container">
+        <a href="#" class="logo-website">
+          <img src="./images/logo.png" alt="logo" class="logo-img" />
+          <span class="logo-name">Filmoteka</span>
+        </a>
+        <nav class="nav-website">
+          <ul class="nav-list">
+            <li class="js-home nav-list__item" data-action="home">home</li>
+            <li class="nav-list__item" data-action="library">my library</li>
+          </ul>
+        </nav>
+      </div>
+      <div class="searchWebsite">
+        <form action="search">
+          <input
+            type="text"
+            class="js-search-input searchInput"
+            placeholder="Write movie name and click Enter"
+          />
+        </form>
+      </div>
+    </header>
 
-      <!-- HTML image reference example. -->
-      <img src="./images/intro.png" alt="" width="640" />
-    </article>
+    <main class="js-main">
+      <div class="container">
+       
+      </div>
+    </main>
+    <footer class="footer">
+          <p class="info-footer">Made by GroupName</p>
+      </footer>
   </body>
 </html>
