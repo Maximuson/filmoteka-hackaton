@@ -117,7 +117,9 @@
 }
 
 /* --------HEADER-------------------- */
-
+header {
+  background-color: #77c1bb;
+}
 .js-header {
   display: flex;
   justify-content: space-between;
@@ -210,4 +212,120 @@
   padding: 0 26px 0;
   margin: 0 auto;
   background-color: #f3f6f6;
+}
+/* ///FOOTER/// */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  background-color: #77c1bb;
+  font-size: 16px;
+}
+
+
+.info-footer {
+  margin: 0 auto;
+  width: 200px;
+}
+
+.section {
+  max-width: 1200px;
+  padding-bottom: 20px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.poster-wrapper {
+  width: 400px;
+  height: 600px;
+}
+
+.description-wrapper {
+  width: 800px;
+}
+
+.film-title {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+
+.vote-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #77c1bb;
+}
+
+.popularity-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.original-film-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #77c1bb;
+}
+
+.film-genre-wrapper {
+  margin-left: 20px;
+  padding: 5px;
+  margin-bottom: 50px;
+}
+
+h3 {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.film-description {
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.button-wrapper {
+  margin: 0;
+  margin-left: 20px;
+}
+
+.button-icon {
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.video-icon-remove:before,
+.video-icon:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.video-icon:before {
+  background-image: url();
+}
+
+.calendar-icon-remove:before,
+.calendar-icon:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.calendar-icon:before {
+  background-image: url();
+}
+.film-poster {
+  height: 100%;
 }
