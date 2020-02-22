@@ -1,4 +1,5 @@
 const initMoviePage = movie => {
+  const currentMovie = movie;
   const getMoviePage = () => {
     const {
       poster_path,
@@ -38,7 +39,7 @@ const initMoviePage = movie => {
         ${overview}
       </p>
       <div class="button-wrapper">
-        <button type="button" class="video-icon button-icon" data-id="${id}" data-action="watched-films">Add to
+        <button type="button" class="js-add-to-watched video-icon button-icon" data-id="${id}" data-action="watched-films">Add to
           watched</button>
         <button type="button" class="calendar-icon button-icon" data-id="${id}" data-action="queue-films">Add to
           queue</button>
@@ -48,5 +49,14 @@ const initMoviePage = movie => {
   };
 
   document.querySelector(".js-main > .container").innerHTML = getMoviePage();
+  document.querySelector(".js-add-to-watched ").addEventListener("click", e => {
+    let watchedFilms = JSON.parse(localStorage.getItem("watched"));
+    if (!watchedFilms) {
+      localStorage.setItem("watched", []);
+      watchedFilms = [];
+    }
+    watchedFilms.push(currentMovie);
+    localStorage.setItem("watched", JSON.stringify(watchedFilms));
+  });
 };
 export default initMoviePage;
