@@ -1,4 +1,8 @@
 import { fetchMovieTrailer } from "./services/movies-api";
+// import PNotify from "node_modules/pnotify/dist/es/PNotify.js";
+import PNotify from "pnotify/dist/es/PNotify.js";
+import "pnotify/dist/PNotifyBrightTheme.css";
+// import "pnotify/dist/PNotifyBrightTheme.css";
 
 const initMoviePage = movie => {
   const currentMovie = movie;
@@ -103,11 +107,19 @@ const initMoviePage = movie => {
       watched.classList.add("video-icon-remove");
       watched.textContent = "Remove from library";
       isFilmInWatched = true;
+      PNotify.success({
+        text: "The movie has been added to the Library",
+        delay: 500
+      });
     } else {
       watched.classList.add("video-icon");
       watched.classList.remove("video-icon-remove");
       watched.textContent = "Add to library";
       isFilmInWatched = false;
+      PNotify.success({
+        text: "The movie has been removed from the Library",
+        delay: 500
+      });
       console.log("watched");
       const filteredList = watchedFilms.filter(item => {
         return item.id !== currentMovie.id;

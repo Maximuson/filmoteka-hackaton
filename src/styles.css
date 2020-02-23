@@ -147,6 +147,10 @@ header {
   background-color: #77c1bb;
   flex-grow: 1;
 }
+.js-main {
+  display: flex;
+  flex-direction: column;
+}
 
 .logo-website {
   display: flex;
@@ -450,4 +454,7 @@ h3 {
 
 .film-poster {
   height: 100%;
+}
+.empty {
+  font-size: 24px;
 }
