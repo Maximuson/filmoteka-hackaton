@@ -1,4 +1,8 @@
+import { fetchMovieTrailer } from "./services/movies-api";
+
 const initMoviePage = movie => {
+  const currentMovie = movie;
+
   const getMoviePage = () => {
     const {
       poster_path,
@@ -8,10 +12,33 @@ const initMoviePage = movie => {
       popularity,
       original_title,
       overview,
+      genres,
       id
     } = movie;
+
+    const genresList = genres => {
+      return genres.reduce((acc, item) => {
+        return (acc += `<li class="genre-list--item"><span>${item.name}</span></li>\n`);
+      }, "");
+    };
+
+    const getMovieTrailer = () => {
+      fetchMovieTrailer(id).then(data => {
+        document.querySelector(".js-main").insertAdjacentHTML(
+          "afterbegin",
+          `
+            <iframe style="margin-bottom:50px" width="100%" height="450" src="https://www.youtube.com/embed/${data}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        `
+        );
+      });
+    };
+    getMovieTrailer();
+
     return `
+    <div class="container">
+
     <section class="section" data-id="{id}">
+
       <div class="poster-wrapper">
         <img class="film-poster" src="${poster_path}" alt="poster image" />
       </div>
@@ -31,22 +58,78 @@ const initMoviePage = movie => {
       </div>
       <div class="film-genre-wrapper">
         <span class="titles film-genre">genre: </span>
-        <span class="genre-list">${"genres"}</span>
+        <ul class="genre-list">${genresList(genres)}</ul>
       </div>
       <h3>About</h3>
       <p class="film-description">
         ${overview}
       </p>
       <div class="button-wrapper">
-        <button type="button" class="video-icon button-icon" data-id="${id}" data-action="watched-films">Add to
-          watched</button>
-        <button type="button" class="calendar-icon button-icon" data-id="${id}" data-action="queue-films">Add to
-          queue</button>
-      </div> 
+        <button type="button" class="js-add-to-watched js-film-icon video-icon button-icon" data-id="${id}" data-action="watched-films">Add to Library
+      </div>
     </section>
+    </div>
     `;
   };
+  document.querySelector(".searchWebsite").style.display = "none";
+  let watchedFilms = localStorage.getItem("watched");
+  if (!watchedFilms) {
+    watchedFilms = [];
+  } else {
+    watchedFilms = JSON.parse(watchedFilms);
+  }
 
-  document.querySelector(".js-main > .container").innerHTML = getMoviePage();
+  if (!watchedFilms) {
+    localStorage.setItem("watched", []);
+    watchedFilms = [];
+  }
+  let isFilmInWatched = watchedFilms.some(item => {
+    return item.id === currentMovie.id;
+  });
+  // MOVIE PAGE RENDER HERE
+  document.querySelector(".js-main").innerHTML = getMoviePage();
+  //
+  const watched = document.querySelector(".js-film-icon");
+  if (isFilmInWatched) {
+    watched.classList.remove("video-icon");
+    watched.classList.add("video-icon-remove");
+    watched.textContent = "Remove from library";
+  }
+  document.querySelector(".js-add-to-watched ").addEventListener("click", e => {
+    if (!isFilmInWatched) {
+      watchedFilms.push(currentMovie);
+      localStorage.setItem("watched", JSON.stringify(watchedFilms));
+      watched.classList.remove("video-icon");
+      watched.classList.add("video-icon-remove");
+      watched.textContent = "Remove from library";
+      isFilmInWatched = true;
+    } else {
+      watched.classList.add("video-icon");
+      watched.classList.remove("video-icon-remove");
+      watched.textContent = "Add to library";
+      isFilmInWatched = false;
+      console.log("watched");
+      const filteredList = watchedFilms.filter(item => {
+        return item.id !== currentMovie.id;
+      });
+      localStorage.setItem("watched", JSON.stringify(filteredList));
+      watchedFilms = filteredList;
+    }
+  });
+
+  //   const addToWatch = function(event) {
+  //     if (event.target.classList.contains("video-icon")) {
+  //       event.target.classList.remove("video-icon");
+  //       event.target.classList.add("video-icon-remove");
+  //       event.target.textContent = "Remove from library";
+  //     } else {
+  //       event.target.classList.add("video-icon");
+  //       event.target.classList.remove("video-icon-remove");
+  //       event.target.textContent = "Add to library";
+  //     }
+  //   };
+
+  //   watched.addEventListener("click", addToWatch);
 };
+
 export default initMoviePage;

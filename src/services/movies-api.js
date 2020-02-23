@@ -33,6 +33,14 @@ export const fetchMoviesById = id => {
     .then(data => {
       data.data.poster_path =
         "https://image.tmdb.org/t/p/w500" + data.data.poster_path;
+      data.data.backdrop_path =
+        "https://image.tmdb.org/t/p/w500" + data.data.backdrop_path;
       return data.data;
     });
+};
+
+export const fetchMovieTrailer = id => {
+  return axios
+    .get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}`)
+    .then(data => data.data.results[0].key);
 };

@@ -1,4 +1,3 @@
-
 .hiddenButton {
   opacity: 0;
   visibility: hidden;
@@ -9,63 +8,79 @@
   width: 100%;
   margin: 0 auto;
 }
-
+html {
+  background-color: #77c1bb;
+}
+body {
+  font-family: Roboto,sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f3;
+}
+main {
+  flex-grow: 1;
+}
 /* MOVIES LIST ==========================================*/
 
 .movies-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
-  margin: 20px 0 0;
-  padding: 0;
+  padding-top: 20px;
   list-style: none;
   justify-content: center;
 }
+
 .movie {
   height: 250px;
   position: relative;
   cursor: pointer;
   transition: all 300ms linear;
 }
+
 .movie:hover {
   transform: scale(1.03);
 }
+
 .poster {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .movie-title {
   position: relative;
   z-index: 1;
   left: 20px;
   bottom: 50px;
   font-size: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: normal;
   margin: 0;
   color: #fff;
 }
+
 .inner {
   width: 100%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  background: -webkit-linear-gradient(
-    bottom,
-    #000 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: -webkit-linear-gradient(bottom,
+      #000 0%,
+      rgba(255, 255, 255, 0) 100%);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   transition: all 200ms linear;
 }
+
 .inner:hover {
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.47);
 }
+
 /* BUTTONS PAGINATION */
 .pagination-box {
   margin: 28px auto 24px;
@@ -73,9 +88,10 @@
   justify-content: space-between;
   width: 210px;
   font-size: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
+
 .pagination-box-button {
   width: 76px;
   font-size: 18px;
@@ -87,6 +103,7 @@
   outline: none;
   cursor: pointer;
 }
+
 .pagination-box-button:hover {
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
   transform: scale(1.02);
@@ -96,6 +113,7 @@
   opacity: 0;
   visibility: hidden;
 }
+
 .pagination-box-info {
   border-radius: 6px;
   border: 1px rgb(199, 195, 195) solid;
@@ -103,7 +121,7 @@
   width: 30px;
   background: #f8f8f8;
   font-size: 15px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   line-height: 2.2;
 }
@@ -113,13 +131,14 @@
 *::after {
   box-sizing: inherit;
   margin: 0;
-    padding: 0;
+  padding: 0;
 }
 
 /* --------HEADER-------------------- */
 header {
   background-color: #77c1bb;
 }
+
 .js-header {
   display: flex;
   justify-content: space-between;
@@ -148,8 +167,40 @@ header {
   font-size: 20px;
   color: #372c48;
   font-weight: 600;
-  /* opacity: 0; */
-  /* visibility: hidden; */
+}
+
+/* -------ANIMATION  LOGO--------------------------------------------- */
+
+@keyframes anime {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -16px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.anime {
+  animation: anime 2s;
+  animation-name: anime;
+  transform-origin: center bottom;
 }
 
 .nav-list {
@@ -173,7 +224,7 @@ header {
 
 .nav-list__item::after {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   background-color: #372c48;
   height: 2px;
@@ -188,11 +239,16 @@ header {
   width: 120px;
 }
 
-/* --------search **----------------------- */
+.nav-list__item:hover {
+  transform: scale(1.15);
+  transition: all .2s ease-in-out;
+}
+
+/* --------search **--------------------------------------------------- */
 
 .searchWebsite {
   padding: 22px 0 22px;
-  margin: 0 auto 22px;
+  margin: 0 auto;
   width: 100%;
   background-color: #f3f6f6;
   box-shadow: 0 5px 9px 1px rgba(0, 0, 0, 0.23);
@@ -200,8 +256,6 @@ header {
 
 .searchInput {
   display: block;
-  /* font-size: 14px; */
-  /* font-family: 'Roboto', sans-serif; */
   height: 24px;
   width: 260px;
   border: none;
@@ -213,6 +267,7 @@ header {
   margin: 0 auto;
   background-color: #f3f6f6;
 }
+
 /* ///FOOTER/// */
 
 .footer {
@@ -224,18 +279,23 @@ header {
   font-size: 16px;
 }
 
-
 .info-footer {
   margin: 0 auto;
   width: 200px;
 }
-
+main {
+  background-color: #c3c3c35e;
+  padding-bottom: 45px;
+}
 .section {
   max-width: 1200px;
   padding-bottom: 20px;
   width: 100%;
   margin: 0 auto;
   display: flex;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 15px 0px grey;
 }
 
 .poster-wrapper {
@@ -252,7 +312,6 @@ header {
   margin-left: 20px;
   margin-bottom: 10px;
 }
-
 
 .vote-wrapper {
   margin-left: 20px;
@@ -288,20 +347,59 @@ h3 {
   margin-left: 20px;
   margin-bottom: 30px;
 }
+.genre-list {
+  display: flex;
+  list-style: none;
+}
+.genre-list--item {
+  margin-right: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    background-color: #77c1bb;
+}
 
 .button-wrapper {
+  display: flex;
   margin: 0;
   margin-left: 20px;
 }
 
 .button-icon {
-  border: 0;
+  padding: 10px;
+  border: 2px solid transparent;
   outline: 0;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
+  margin-right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: initial;
+  text-align: right;
 }
 
-.video-icon-remove:before,
+.video-icon:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
+.calendar-icon:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
+.video-icon-remove:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
+.calendar-icon-remove:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
 .video-icon:before {
   background-repeat: no-repeat;
   background-position: 50%;
@@ -311,10 +409,21 @@ h3 {
 }
 
 .video-icon:before {
-  background-image: url();
+  background-image: url(./images/video.png);
 }
 
-.calendar-icon-remove:before,
+.video-icon-remove:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.video-icon-remove:before {
+  background-image: url(./images/remove-video.png);
+}
+
 .calendar-icon:before {
   background-repeat: no-repeat;
   background-position: 50%;
@@ -324,8 +433,21 @@ h3 {
 }
 
 .calendar-icon:before {
-  background-image: url();
+  background-image: url(./images/calendar-plus.png);
 }
+
+.calendar-icon-remove:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.calendar-icon-remove:before {
+  background-image: url(./images/calendar-minus.png);
+}
+
 .film-poster {
   height: 100%;
 }

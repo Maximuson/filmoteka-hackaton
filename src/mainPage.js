@@ -2,7 +2,9 @@ import * as API from "./services/movies-api";
 import initMoviePage from "./initFilmPage";
 // import Layout from "./Layout";
 const initMainPage = () => {
-  document.querySelector(".js-main > .container").innerHTML = `
+  document.querySelector(".searchWebsite").style.display = "block";
+  document.querySelector(".js-main").innerHTML = `
+  <div class="container">
     <ul class="movies-list" id="movies-list"></ul>
     <div class="pagination-box">
       <button class="pagination-box-button prev">Prev</button>
@@ -10,6 +12,7 @@ const initMainPage = () => {
       <button class="pagination-box-button next">Next</button>
     </div>
     <button class="scrollTopButton"></button>
+    </div>
     `;
   const app = {
     page: 1,
