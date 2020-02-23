@@ -1,5 +1,8 @@
+import { fetchMovieTrailer } from "./services/movies-api";
+
 const initMoviePage = movie => {
   const currentMovie = movie;
+
   const getMoviePage = () => {
     const {
       poster_path,
@@ -9,10 +12,33 @@ const initMoviePage = movie => {
       popularity,
       original_title,
       overview,
+      genres,
       id
     } = movie;
+
+    const genresList = genres => {
+      return genres.reduce((acc, item) => {
+        return (acc += `<li class="genre-list--item"><span>${item.name}</span></li>\n`);
+      }, "");
+    };
+
+    const getMovieTrailer = () => {
+      fetchMovieTrailer(id).then(data => {
+        document.querySelector(".js-main").insertAdjacentHTML(
+          "afterbegin",
+          `
+            <iframe style="margin-bottom:50px" width="100%" height="450" src="https://www.youtube.com/embed/${data}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        `
+        );
+      });
+    };
+    getMovieTrailer();
+
     return `
+    <div class="container">
+
     <section class="section" data-id="{id}">
+
       <div class="poster-wrapper">
         <img class="film-poster" src="${poster_path}" alt="poster image" />
       </div>
@@ -32,7 +58,7 @@ const initMoviePage = movie => {
       </div>
       <div class="film-genre-wrapper">
         <span class="titles film-genre">genre: </span>
-        <span class="genre-list">${"genres"}</span>
+        <ul class="genre-list">${genresList(genres)}</ul>
       </div>
       <h3>About</h3>
       <p class="film-description">
@@ -45,18 +71,32 @@ const initMoviePage = movie => {
           queue</button>
       </div> 
     </section>
+    </div>
     `;
   };
+  document.querySelector(".searchWebsite").style.display = "none";
+  let watchedFilms = localStorage.getItem("watched");
+  if (!watchedFilms) {
+    watchedFilms = [];
+  } else {
+    watchedFilms = JSON.parse(watchedFilms);
+  }
 
-  document.querySelector(".js-main > .container").innerHTML = getMoviePage();
+  if (!watchedFilms) {
+    localStorage.setItem("watched", []);
+    watchedFilms = [];
+  }
+  let isFilmInWatched = watchedFilms.some(item => {
+    return item.id === currentMovie.id;
+  });
+
+  document.querySelector(".js-main").innerHTML = getMoviePage();
   document.querySelector(".js-add-to-watched ").addEventListener("click", e => {
-    let watchedFilms = JSON.parse(localStorage.getItem("watched"));
-    if (!watchedFilms) {
-      localStorage.setItem("watched", []);
-      watchedFilms = [];
+    if (!isFilmInWatched) {
+      watchedFilms.push(currentMovie);
+      localStorage.setItem("watched", JSON.stringify(watchedFilms));
+      isFilmInWatched = true;
     }
-    watchedFilms.push(currentMovie);
-    localStorage.setItem("watched", JSON.stringify(watchedFilms));
   });
 };
 export default initMoviePage;
