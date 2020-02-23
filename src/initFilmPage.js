@@ -38,9 +38,9 @@ const initMoviePage = movie => {
         ${overview}
       </p>
       <div class="button-wrapper">
-        <button type="button" class="video-icon button-icon" data-id="${id}" data-action="watched-films">Add to
+        <button type="button" class="video-icon button-icon js-film-icon" data-id="${id}" data-action="watched-films">Add to
           watched</button>
-        <button type="button" class="calendar-icon button-icon" data-id="${id}" data-action="queue-films">Add to
+        <button type="button" class="calendar-icon button-icon js-calendar-icon" data-id="${id}" data-action="queue-films">Add to
           queue</button>
       </div> 
     </section>
@@ -48,5 +48,38 @@ const initMoviePage = movie => {
   };
 
   document.querySelector(".js-main > .container").innerHTML = getMoviePage();
+
+  const watched = document.querySelector('.js-film-icon');
+  const queue = document.querySelector('.js-calendar-icon');
+
+
+  const addToWatch = function (event) {
+    if (event.target.classList.contains('video-icon')) {
+      event.target.classList.remove('video-icon')
+      event.target.classList.add('video-icon-remove')
+      event.target.textContent = 'Remove from watched'
+    } else {
+      event.target.classList.add('video-icon')
+      event.target.classList.remove('video-icon-remove')
+      event.target.textContent = 'Add to watched'
+    }
+
+  }
+
+  const addToQueue = function (event) {
+    if(event.target.classList.contains('calendar-icon')) {
+      event.target.classList.remove('calendar-icon')
+      event.target.classList.add('calendar-icon-remove')
+      event.target.textContent = 'Remove from queue'
+    }  else {
+      event.target.classList.add('calendar-icon')
+      event.target.classList.remove('calendar-icon-remove')
+      event.target.textContent = 'Add to queue'
+    }
+  }
+
+  watched.addEventListener('click', addToWatch);
+  queue.addEventListener('click', addToQueue);
 };
+
 export default initMoviePage;

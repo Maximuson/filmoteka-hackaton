@@ -20,21 +20,25 @@
   list-style: none;
   justify-content: center;
 }
+
 .movie {
   height: 250px;
   position: relative;
   cursor: pointer;
   transition: all 300ms linear;
 }
+
 .movie:hover {
   transform: scale(1.03);
 }
+
 .poster {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
+
 .movie-title {
   position: relative;
   z-index: 1;
@@ -46,25 +50,26 @@
   margin: 0;
   color: #fff;
 }
+
 .inner {
   width: 100%;
   height: 100%;
   position: absolute;
   bottom: 0;
-  background: -webkit-linear-gradient(
-    bottom,
-    #000 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: -webkit-linear-gradient(bottom,
+      #000 0%,
+      rgba(255, 255, 255, 0) 100%);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   transition: all 200ms linear;
 }
+
 .inner:hover {
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.47);
 }
+
 /* BUTTONS PAGINATION */
 .pagination-box {
   margin: 28px auto 24px;
@@ -75,6 +80,7 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
+
 .pagination-box-button {
   width: 76px;
   font-size: 18px;
@@ -86,6 +92,7 @@
   outline: none;
   cursor: pointer;
 }
+
 .pagination-box-button:hover {
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
   transform: scale(1.02);
@@ -95,6 +102,7 @@
   opacity: 0;
   visibility: hidden;
 }
+
 .pagination-box-info {
   border-radius: 6px;
   border: 1px rgb(199, 195, 195) solid;
@@ -119,6 +127,7 @@
 header {
   background-color: #77c1bb;
 }
+
 .js-header {
   display: flex;
   justify-content: space-between;
@@ -212,6 +221,7 @@ header {
   margin: 0 auto;
   background-color: #f3f6f6;
 }
+
 /* ///FOOTER/// */
 
 .footer {
@@ -287,18 +297,46 @@ h3 {
 }
 
 .button-wrapper {
+  display: flex;
   margin: 0;
   margin-left: 20px;
 }
 
 .button-icon {
-  border: 0;
+  padding: 10px;
+  border: 2px solid transparent;
   outline: 0;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
+  margin-right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: initial;
+  text-align: right;
 }
 
-.video-icon-remove:before,
+.video-icon:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
+.calendar-icon:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
+.video-icon-remove:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
+.calendar-icon-remove:hover {
+  border: 2px solid #77c1bb;
+  border-radius: 20px;
+}
+
 .video-icon:before {
   background-repeat: no-repeat;
   background-position: 50%;
@@ -308,10 +346,21 @@ h3 {
 }
 
 .video-icon:before {
-  background-image: url();
+  background-image: url(./images/video.png);
 }
 
-.calendar-icon-remove:before,
+.video-icon-remove:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.video-icon-remove:before {
+  background-image: url(./images/remove-video.png);
+}
+
 .calendar-icon:before {
   background-repeat: no-repeat;
   background-position: 50%;
@@ -321,8 +370,21 @@ h3 {
 }
 
 .calendar-icon:before {
-  background-image: url();
+  background-image: url(./images/calendar-plus.png);
 }
+
+.calendar-icon-remove:before {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  content: " ";
+  width: 14px;
+  height: 14px;
+}
+
+.calendar-icon-remove:before {
+  background-image: url(./images/calendar-minus.png);
+}
+
 .film-poster {
   height: 100%;
 }
