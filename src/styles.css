@@ -124,7 +124,7 @@ main {
 *::after {
   box-sizing: inherit;
   margin: 0;
-    padding: 0;
+  padding: 0;
 }
 
 /* --------HEADER-------------------- */
@@ -159,8 +159,40 @@ header {
   font-size: 20px;
   color: #372c48;
   font-weight: 600;
-  /* opacity: 0; */
-  /* visibility: hidden; */
+}
+
+/* -------ANIMATION  LOGO--------------------------------------------- */
+
+@keyframes anime {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -16px, 0);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.anime {
+  animation: anime 2s;
+  animation-name: anime;
+  transform-origin: center bottom;
 }
 
 .nav-list {
@@ -199,7 +231,12 @@ header {
   width: 120px;
 }
 
-/* --------search **----------------------- */
+.nav-list__item:hover {
+  transform: scale(1.15);
+  transition: all .2s ease-in-out;
+}
+
+/* --------search **--------------------------------------------------- */
 
 .searchWebsite {
   padding: 22px 0 22px;
@@ -211,8 +248,6 @@ header {
 
 .searchInput {
   display: block;
-  /* font-size: 14px; */
-  /* font-family: 'Roboto', sans-serif; */
   height: 24px;
   width: 260px;
   border: none;
@@ -224,7 +259,8 @@ header {
   margin: 0 auto;
   background-color: #f3f6f6;
 }
-/* ///FOOTER/// */
+
+/* ------- FOOTER **------------------------------------------------------ */
 
 .footer {
   display: flex;
