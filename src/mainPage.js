@@ -11,7 +11,6 @@ const initMainPage = () => {
       <span class="pagination-box-info"></span>
       <button class="pagination-box-button next">Next</button>
     </div>
-    <button class="scrollTopButton"></button>
     </div>
     `;
   const app = {

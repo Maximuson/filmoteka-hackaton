@@ -5,11 +5,11 @@ const initWatched = () => {
   document.querySelector(".js-main").innerHTML = `
   <div class="container">
   <ul class="movies-list" id="movies-list"></ul>
-  <button class="scrollTopButton"></button>
   </div>
   `;
   const getWatchedMovies = () => {
     let watchedFilms = localStorage.getItem("watched");
+
     if (!watchedFilms) {
       watchedFilms = [];
     } else {
@@ -19,6 +19,7 @@ const initWatched = () => {
       localStorage.setItem("watched", []);
       watchedFilms = [];
     }
+
     const films = watchedFilms.reduce((acc, item) => {
       const { id, backdrop_path, title } = item;
       return (acc += `
@@ -31,7 +32,17 @@ const initWatched = () => {
     }, "");
 
     // .insertAdjacentHTML("beforeend", films);
-    document.querySelector("#movies-list").innerHTML = films;
+    document.querySelector(".searchWebsite").style.display = "none";
+
+    if (watchedFilms.length !== 0) {
+      document.querySelector("#movies-list").innerHTML = films;
+    } else {
+      document.querySelector(
+        ".js-main .container"
+      ).innerHTML = `<p class="empty">Your Library is empty</p>`;
+      document.querySelector(".js-main .container").style =
+        "display:flex;justify-content:center;align-items:center;flex: 1 1 auto;";
+    }
 
     document.querySelector("#movies-list").addEventListener("click", e => {
       if (e.target.closest(".movie")) {
