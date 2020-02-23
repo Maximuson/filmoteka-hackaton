@@ -65,11 +65,8 @@ const initMoviePage = movie => {
         ${overview}
       </p>
       <div class="button-wrapper">
-        <button type="button" class="js-add-to-watched video-icon button-icon" data-id="${id}" data-action="watched-films">Add to
-          watched</button>
-        <button type="button" class="calendar-icon button-icon" data-id="${id}" data-action="queue-films">Add to
-          queue</button>
-      </div> 
+        <button type="button" class="js-add-to-watched js-film-icon video-icon button-icon" data-id="${id}" data-action="watched-films">Add to Library
+      </div>
     </section>
     </div>
     `;
@@ -89,14 +86,50 @@ const initMoviePage = movie => {
   let isFilmInWatched = watchedFilms.some(item => {
     return item.id === currentMovie.id;
   });
-
+  // MOVIE PAGE RENDER HERE
   document.querySelector(".js-main").innerHTML = getMoviePage();
+  //
+  const watched = document.querySelector(".js-film-icon");
+  if (isFilmInWatched) {
+    watched.classList.remove("video-icon");
+    watched.classList.add("video-icon-remove");
+    watched.textContent = "Remove from library";
+  }
   document.querySelector(".js-add-to-watched ").addEventListener("click", e => {
     if (!isFilmInWatched) {
       watchedFilms.push(currentMovie);
       localStorage.setItem("watched", JSON.stringify(watchedFilms));
+      watched.classList.remove("video-icon");
+      watched.classList.add("video-icon-remove");
+      watched.textContent = "Remove from library";
       isFilmInWatched = true;
+    } else {
+      watched.classList.add("video-icon");
+      watched.classList.remove("video-icon-remove");
+      watched.textContent = "Add to library";
+      isFilmInWatched = false;
+      console.log("watched");
+      const filteredList = watchedFilms.filter(item => {
+        return item.id !== currentMovie.id;
+      });
+      localStorage.setItem("watched", JSON.stringify(filteredList));
+      watchedFilms = filteredList;
     }
   });
+
+  //   const addToWatch = function(event) {
+  //     if (event.target.classList.contains("video-icon")) {
+  //       event.target.classList.remove("video-icon");
+  //       event.target.classList.add("video-icon-remove");
+  //       event.target.textContent = "Remove from library";
+  //     } else {
+  //       event.target.classList.add("video-icon");
+  //       event.target.classList.remove("video-icon-remove");
+  //       event.target.textContent = "Add to library";
+  //     }
+  //   };
+
+  //   watched.addEventListener("click", addToWatch);
 };
+
 export default initMoviePage;
