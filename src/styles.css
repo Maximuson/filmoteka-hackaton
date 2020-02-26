@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 1024px;
+  max-width: 320px;
   width: 100%;
   margin: 0 auto;
 }
@@ -20,16 +20,23 @@ body {
 }
 main {
   flex-grow: 1;
+  background-color: #c3c3c35e;
 }
 /* MOVIES LIST ==========================================*/
-
+.main-header {
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(60, 60, 60);
+}
 .movies-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 20px;
   padding-top: 20px;
   list-style: none;
-  justify-content: center;
+  width: 300px;
+  margin: 0 auto;
+  /* justify-content: center; */
 }
 
 .movie {
@@ -53,8 +60,8 @@ main {
 .movie-title {
   position: relative;
   z-index: 1;
-  left: 20px;
-  bottom: 50px;
+  left: 10px;
+  bottom: 250px;
   font-size: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: normal;
@@ -160,17 +167,11 @@ header {
   width: 110px;
   cursor: pointer;
   height: 20px;
-  margin: 10px;
+  margin: 15px;
 }
 
 .logo-img {
-  width: 22px;
-}
-
-.logo-name {
-  font-size: 20px;
-  color: #372c48;
-  font-weight: 600;
+  width: 30px;
 }
 
 /* -------ANIMATION  LOGO--------------------------------------------- */
@@ -219,7 +220,7 @@ header {
   color: #372c48;
   width: 124px;
   height: 30px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   line-height: 2.4;
   text-align: center;
@@ -234,17 +235,19 @@ header {
   height: 2px;
   width: 0%;
   left: 50%;
+  top: 105%;
   transition: width 0.3s ease-in-out;
   transform: translateX(-50%);
 }
 
 .nav-list__item:hover:after,
 .nav-list__item:hover:focus {
-  width: 120px;
+  width: 100px;
 }
-
+.home-item:hover:after {
+  width: 60px;
+}
 .nav-list__item:hover {
-  transform: scale(1.15);
   transition: all .2s ease-in-out;
 }
 
@@ -261,7 +264,7 @@ header {
 .searchInput {
   display: block;
   height: 24px;
-  width: 260px;
+  width: 200px;
   border: none;
   border-bottom: 2px rgb(129, 126, 126) solid;
   background-image: url(./images/icon.png);
@@ -270,6 +273,7 @@ header {
   padding: 0 26px 0;
   margin: 0 auto;
   background-color: #f3f6f6;
+  font-size: 16px;
 }
 
 /* ///FOOTER/// */
@@ -286,29 +290,28 @@ header {
 .info-footer {
   margin: 0 auto;
   width: 200px;
+  text-align: center;
 }
-main {
-  background-color: #c3c3c35e;
-  padding-bottom: 45px;
-}
+
 .section {
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
   padding-bottom: 20px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
   background-color: #fff;
-  padding: 20px;
   box-shadow: 0px 0px 15px 0px grey;
 }
 
 .poster-wrapper {
-  width: 400px;
-  height: 600px;
+  width: 320px;
+  height: auto;
 }
 
 .description-wrapper {
-  width: 800px;
+  width: 320px;
+  text-align: center;
 }
 
 .film-title {
@@ -318,26 +321,30 @@ main {
 }
 
 .vote-wrapper {
-  margin-left: 20px;
   padding: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
   background-color: #77c1bb;
 }
 
 .popularity-wrapper {
-  margin-left: 20px;
   padding: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .original-film-wrapper {
-  margin-left: 20px;
   padding: 5px;
   background-color: #77c1bb;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .film-genre-wrapper {
-  margin-left: 20px;
   padding: 5px;
   margin-bottom: 50px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 h3 {
@@ -348,15 +355,23 @@ h3 {
 
 .film-description {
   margin: 0;
+  text-align: justify;
   margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 30px;
+}
+.about-movie {
+  margin-left: 0;
 }
 .genre-list {
   display: flex;
+  justify-content: space-between;
   list-style: none;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 .genre-list--item {
-  margin-right: 10px;
+  margin-bottom: 10px;
     padding: 5px;
     border-radius: 10px;
     font-family: sans-serif;
@@ -366,7 +381,9 @@ h3 {
 .button-wrapper {
   display: flex;
   margin: 0;
-  margin-left: 20px;
+}
+.button {
+  margin: 0 auto;
 }
 
 .button-icon {
@@ -375,7 +392,6 @@ h3 {
   outline: 0;
   font-size: 16px;
   cursor: pointer;
-  margin-right: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -454,7 +470,52 @@ h3 {
 
 .film-poster {
   height: 100%;
+  width: 280px;
+  margin: 20px;
 }
 .empty {
   font-size: 24px;
+}
+@media (min-width: 940px) {
+  .container {
+    min-width: 920px;
+  }
+  .movies-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+  }
+
+  .logo-website {
+    margin: 10px;
+  }
+  main {
+    padding-bottom: 45px;
+  }
+  .section {
+    flex-direction: row;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  .description-wrapper {
+    width: 800px;
+    text-align: left;
+  }
+  .poster-wrapper {
+    width: 400px;
+  }
+  .searchInput {
+    width: 260px;
+  }
+  .film-poster {
+    margin: 0;
+  }
+  .button-wrapper {
+    margin-left: 20px;
+  }
+  .button-icon {
+    margin-right: 20px;
+  }
+  .about-movie {
+    margin-left: 20px;
+  }
 }

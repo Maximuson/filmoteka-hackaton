@@ -5,6 +5,7 @@ const initMainPage = () => {
   document.querySelector(".searchWebsite").style.display = "block";
   document.querySelector(".js-main").innerHTML = `
   <div class="container">
+    <h1 class="main-header">Trending now</h1>
     <ul class="movies-list" id="movies-list"></ul>
     <div class="pagination-box">
       <button class="pagination-box-button prev">Prev</button>
@@ -31,11 +32,11 @@ const initMainPage = () => {
     API.fetchTrendingMovies(page)
       .then(data => {
         const films = data.reduce((acc, item) => {
-          const { id, backdrop_path, title } = item;
+          const { id, backdrop_path, title, name } = item;
           return (acc += `
           <li data-id="${id}" class="movie">
             <img class="poster" src="${backdrop_path}" />
-            <h2 class="movie-title">${title}</h2>
+            <h2 class="movie-title">${title || name}</h2>
             <div class="inner"></div>
             </li>
           `);
