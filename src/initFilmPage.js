@@ -32,7 +32,7 @@ const initMoviePage = movie => {
         document.querySelector(".js-main").insertAdjacentHTML(
           "afterbegin",
           `
-            <iframe style="margin-bottom:50px" width="100%" height="450" src="https://www.youtube.com/embed/${data}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            <iframe class="movie-trailer" src="https://www.youtube.com/embed/${data}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
         `
         );
       });
