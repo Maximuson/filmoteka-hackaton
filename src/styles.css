@@ -9,7 +9,7 @@
   margin: 0 auto;
 }
 html {
-  background-color: #77c1bb;
+  background-color: rgba(41,151,151,.8);
 }
 body {
   font-family: Roboto,sans-serif;
@@ -23,10 +23,19 @@ main {
   background-color: #c3c3c35e;
 }
 /* MOVIES LIST ==========================================*/
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  min-height: 70px;
+  background-size: cover;
+  background-color: rgba(41,151,151,.8);
+  z-index: 100;
+}
 .main-header {
   text-align: center;
-  margin-top: 20px;
-  color: rgb(60, 60, 60);
+  margin-top: 130px;
+  color: rgb(60, 60, 60, .9);
 }
 .movies-list {
   display: grid;
@@ -90,7 +99,7 @@ main {
 
 /* BUTTONS PAGINATION */
 .pagination-box {
-  margin: 28px auto 24px;
+  margin: 20px auto 60px;
   display: flex;
   justify-content: space-between;
   width: 210px;
@@ -105,6 +114,7 @@ main {
   border-radius: 6px;
   background: #f8f8f8;
   border: 1px rgb(199, 195, 195) solid;
+  color: rgb(129, 126, 126);
 
   transition: all 200ms linear;
   outline: none;
@@ -131,6 +141,7 @@ main {
   font-family: "Roboto", sans-serif;
   text-align: center;
   line-height: 2.2;
+  color: rgb(129, 126, 126);
 }
 
 *,
@@ -142,16 +153,12 @@ main {
 }
 
 /* --------HEADER-------------------- */
-header {
-  background-color: #77c1bb;
-}
 
 .js-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  background-color: #77c1bb;
   flex-grow: 1;
 }
 .js-main {
@@ -219,7 +226,6 @@ header {
   text-transform: uppercase;
   color: #372c48;
   width: 124px;
-  height: 30px;
   font-weight: 500;
   cursor: pointer;
   line-height: 2.4;
@@ -254,27 +260,27 @@ header {
 /* --------search **--------------------------------------------------- */
 
 .searchWebsite {
-  padding: 22px 0 22px;
+  padding: 10px 0 10px;
   margin: 0 auto;
   width: 100%;
-  background-color: #f3f6f6;
+  background-color: rgb(243,246,246, .5);
   box-shadow: 0 5px 9px 1px rgba(0, 0, 0, 0.23);
 }
 
 .searchInput {
   display: block;
-  height: 24px;
   width: 200px;
   border: none;
   border-bottom: 2px rgb(129, 126, 126) solid;
-  background-image: url(./images/icon.png);
-  background-repeat: no-repeat;
+  color: rgb(129, 126, 126);
+  /* background-image: url(./images/icon.png);
+  background-repeat: no-repeat; */
   outline: none;
-  padding: 0 26px 10px;
+  padding-bottom: 5px;
   margin: 0 auto;
-  background-color: #f3f6f6;
+  background-color: transparent;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
 }
 
 /* ///FOOTER/// */
@@ -283,21 +289,28 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
-  background-color: #77c1bb;
+  height: 40px;
+  background-color: rgba(41,151,151,.8);
   font-size: 16px;
+
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .info-footer {
   margin: 0 auto;
   width: 200px;
   text-align: center;
+  color: rgb(129, 126, 126);
 }
 
 .movie-trailer {
   margin-bottom: 20px;
   width: 100%;
   height: 450px;
+  margin-top: 70px;
 }
 .section {
   display: flex;
@@ -308,7 +321,7 @@ header {
   margin: 0 auto;
   background-color: #fff;
   box-shadow: 0px 0px 15px 0px grey;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .poster-wrapper {
@@ -412,20 +425,20 @@ h3 {
   border-radius: 20px;
 }
 
-.calendar-icon:hover {
+/* .calendar-icon:hover {
   border: 2px solid #77c1bb;
   border-radius: 20px;
-}
+} */
 
 .video-icon-remove:hover {
   border: 2px solid #77c1bb;
   border-radius: 20px;
 }
 
-.calendar-icon-remove:hover {
+/* .calendar-icon-remove:hover {
   border: 2px solid #77c1bb;
   border-radius: 20px;
-}
+} */
 
 .video-icon:before {
   background-repeat: no-repeat;
@@ -451,7 +464,7 @@ h3 {
   background-image: url(./images/remove-video.png);
 }
 
-.calendar-icon:before {
+/* .calendar-icon:before {
   background-repeat: no-repeat;
   background-position: 50%;
   content: " ";
@@ -473,7 +486,7 @@ h3 {
 
 .calendar-icon-remove:before {
   background-image: url(./images/calendar-minus.png);
-}
+} */
 
 .film-poster {
   height: 100%;
@@ -541,6 +554,7 @@ h3 {
     flex-direction: row;
     max-width: 1200px;
     padding: 20px;
+    margin-bottom: 40px;
   }
   .description-wrapper {
     width: 800px;
@@ -566,5 +580,8 @@ h3 {
   }
   .genre-list {
     justify-content: left;
+  }
+  .pagination-box {
+    margin: 28px auto 20px;
   }
 }
