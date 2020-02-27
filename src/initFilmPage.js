@@ -17,7 +17,8 @@ const initMoviePage = movie => {
       original_title,
       overview,
       genres,
-      id
+      id,
+      name
     } = movie;
 
     const genresList = genres => {
@@ -31,7 +32,7 @@ const initMoviePage = movie => {
         document.querySelector(".js-main").insertAdjacentHTML(
           "afterbegin",
           `
-            <iframe style="margin-bottom:50px" width="100%" height="450" src="https://www.youtube.com/embed/${data}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            <iframe class="movie-trailer" src="https://www.youtube.com/embed/${data}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
         `
         );
       });
@@ -47,7 +48,7 @@ const initMoviePage = movie => {
         <img class="film-poster" src="${poster_path}" alt="poster image" />
       </div>
       <div class="description-wrapper">
-      <h2 class="film-title">${title}</h2>
+      <h2 class="film-title">${title || name}</h2>
       <div class="vote-wrapper">
         <span class="titles vote-titles">vote / votes: </span>
         <span class="votes-numbers">${vote_average} / ${vote_count}</span>
@@ -64,12 +65,12 @@ const initMoviePage = movie => {
         <span class="titles film-genre">genre: </span>
         <ul class="genre-list">${genresList(genres)}</ul>
       </div>
-      <h3>About</h3>
+      <h3 class="about-movie">About</h3>
       <p class="film-description">
         ${overview}
       </p>
       <div class="button-wrapper">
-        <button type="button" class="js-add-to-watched js-film-icon video-icon button-icon" data-id="${id}" data-action="watched-films">Add to Library
+        <button type="button" class="button js-add-to-watched js-film-icon video-icon button-icon" data-id="${id}" data-action="watched-films">Add to Library
       </div>
     </section>
     </div>
@@ -77,6 +78,7 @@ const initMoviePage = movie => {
   };
   document.querySelector(".searchWebsite").style.display = "none";
   let watchedFilms = localStorage.getItem("watched");
+
   if (!watchedFilms) {
     watchedFilms = [];
   } else {
@@ -120,7 +122,7 @@ const initMoviePage = movie => {
         text: "The movie has been removed from the Library",
         delay: 500
       });
-      console.log("watched");
+      // console.log("watched");
       const filteredList = watchedFilms.filter(item => {
         return item.id !== currentMovie.id;
       });

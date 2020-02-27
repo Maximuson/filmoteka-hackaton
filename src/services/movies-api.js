@@ -6,6 +6,7 @@ const key = "684a168c8e7f797395d8a1d5291bcabb";
 
 export const fetchTrendingMovies = (page = 1) => {
   const url = `/3/discover/movie?sort_by=popularity.desc&api_key=${key}&perPage=2language=en-US&page=${page}&&include_adult=false&total_results=12&total_pages=10`;
+  // const url = `/3/trending/all/day?api_key=${key}&language=en-US&page=${page}`;
   return axios.get(url).then(response => {
     response.data.results.forEach(item => {
       item.backdrop_path =
