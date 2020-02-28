@@ -33,6 +33,8 @@ const initWatched = () => {
 
     // .insertAdjacentHTML("beforeend", films);
     document.querySelector(".searchWebsite").style.display = "none";
+    document.querySelector("#movies-list").style =
+      "padding-top:100px;padding-bottom:70px;";
 
     if (watchedFilms.length !== 0) {
       document.querySelector("#movies-list").innerHTML = films;
