@@ -36,6 +36,7 @@ export const fetchMoviesById = id => {
         "https://image.tmdb.org/t/p/w500" + data.data.poster_path;
       data.data.backdrop_path =
         "https://image.tmdb.org/t/p/w500" + data.data.backdrop_path;
+      data.data.release_date = data.data.release_date.slice(0, 4);
       return data.data;
     });
 };

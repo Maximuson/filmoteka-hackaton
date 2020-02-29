@@ -18,7 +18,8 @@ const initMoviePage = movie => {
       overview,
       genres,
       id,
-      name
+      name,
+      release_date
     } = movie;
 
     const genresList = genres => {
@@ -49,6 +50,9 @@ const initMoviePage = movie => {
       </div>
       <div class="description-wrapper">
       <h2 class="film-title">${title || name}</h2>
+      <div class="release-year-wrapper">
+      <span class="release-year">year: ${release_date}</span>
+      </div>
       <div class="vote-wrapper">
         <span class="titles vote-titles">vote / votes: </span>
         <span class="votes-numbers">${vote_average} / ${vote_count}</span>
